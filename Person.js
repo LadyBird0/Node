@@ -1,39 +1,69 @@
-var Person = require("./Person.js");
+//  This is a Constructor function taking age and passport 
 
-// Checks whether minimum of 3 parameters have been entered
+//  as the paramaters
 
-// 
+function Person(age, passport) {
 
-if(process.argv.length <= 2) {
-
-  console.log("You must pass the age of the person.");
-
-  // Exists 
-
-  process.exit();
-
-}
-
-// Creates the person using the constructor function
-
-// 
-
-var person = new Person(1, false);
-
-
-
-console.log("Person is an adult is: " + person.isAdult());
-
-console.log("Person can have bank account is: " + person.canHaveBankAccounts());
-
-// Sets the age of the person
-
-// 
-
-person.setAge(process.argv[2]);
-
-
-
-console.log("Person is an adult is: " + person.isAdult());
-
-console.log("Person can have bank account is: " + person.canHaveBankAccounts());
+    this.age = age;
+  
+    this.passport = passport;
+  
+  }
+  
+  // Sets the age
+  
+  // 
+  
+  Person.prototype.setAge = function(age) {
+  
+      this.age = age;
+  
+  };
+  
+  // Checks whether the person is Adult based on the age
+  
+  // 
+  
+  Person.prototype.isAdult = function() {
+  
+      return this.age >= 18? true: false;
+  
+  };
+  
+  // Checks whether the person can have bank accounts 
+  
+  // based on whether he/she is an adult
+  
+  // 
+  
+  Person.prototype.canHaveBankAccounts = function() {
+  
+      return this.isAdult()?true:false;
+  
+  };
+  
+  // Sets the passport status of the person
+  
+  // 
+  
+  Person.prototype.passportStatus = function(status) {
+  
+      this.passport = status;
+  
+  };
+  
+  // Checks whether the person has a passport
+  
+  // 
+  
+  Person.prototype.hasPassport = function() {
+  
+      return this.passport;
+  
+  };
+  
+  //  Sets the Person object to module.exports
+  
+  // 
+  
+  module.exports = Person;
